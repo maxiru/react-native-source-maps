@@ -58,17 +58,16 @@ export const getStackTrace = async error => {
 };
 
 const createSourceMapper = async () => {
-	const SoureMapBundlePath = Platform.OS === "ios" ? `${RNFS.MainBundlePath}/${options.sourceMapBundle}` : options.sourceMapBundle;
 	try {
-		const fileExists = (Platform.OS === "ios") ? (await RNFS.exists(SoureMapBundlePath)) : (await RNFS.existsAssets(SoureMapBundlePath));
+		const fileExists = await RNFS.existsAssets(options.sourceMapBundle);
 		if (!fileExists) {
 			throw new Error(__DEV__ ?
 				'Unable to read source maps in DEV mode' :
-				`Unable to read source maps, possibly invalid sourceMapBundle file, please check that it exists here: ${SoureMapBundlePath}`
+				`Unable to read source maps, possibly invalid sourceMapBundle file, please check that it exists here: assets/${options.sourceMapBundle}`
 			);
 		}
 
-		const mapContents = (Platform.OS === "ios") ? (await RNFS.readFile(SoureMapBundlePath, 'utf8')) : (await RNFS.readFileAssets(SoureMapBundlePath, 'utf8'));
+		const mapContents = await RNFS.readFileAssets(options.sourceMapBundle, 'utf8');
 		const sourceMaps = JSON.parse(mapContents);
 		const mapConsumer = new SourceMap.SourceMapConsumer(sourceMaps);
 
