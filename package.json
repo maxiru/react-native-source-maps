@@ -1,5 +1,5 @@
 {
-  "name": "react-native-source-maps",
+  "name": "@maxiru/react-native-source-maps",
   "version": "1.0.2",
   "description": "Utilities to easily add support of Source Maps to your React Native project",
   "main": "index.js",
@@ -25,7 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/philipshurpik/react-native-source-maps.git"
+    "url": "https://github.com/maxiru/react-native-source-maps"
+  },
+  "publishConfig": {
+    "registry": "https://nexus.simis.ai/repository/npm-private/"
   },
   "bugs": {
     "url": "https://github.com/philipshurpik/react-native-source-maps/issues"
