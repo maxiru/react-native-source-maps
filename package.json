@@ -1,6 +1,6 @@
 {
   "name": "@maxiru/react-native-source-maps",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Utilities to easily add support of Source Maps to your React Native project",
   "main": "index.js",
   "scripts": {
